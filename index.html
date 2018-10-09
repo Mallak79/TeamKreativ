@@ -2,16 +2,42 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <title>Team Kreativ</title>
+    <title>Victorias serieväljare</title>
+    <link href="./main.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>Black swan - metodutveckling</h1>
-    <div>
-      <div>
+    <h1>Vilken TV-serie ska Victoria titta på ikväll?</h1>
+    <img src="">
+    <div class="inputSection">
+      <div class="inputs">
         <input placeholder="Something"></input>
       </div>
-      <button>Lämna ditt bidrag</button>
+      <button class="addOption">Add</button>
     </div>
-    <button>Klar!</button>
+    <div class="resultSection"></div>
+    <button class="submit">Ask!</button>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(function() {
+        $('.resultSection').hide()
+        var add_option = function() {
+          $('.inputs').append('<input></input>')
+        }
+        $('.addOption').click(add_option)
+        var options = []
+        var submit = function() {
+          $('.inputSection').hide()
+          $('.resultSection').css('display', 'flex')
+          $('input').each(function() {
+            options.push($(this).val())
+          })
+          var winner = options[Math.floor(Math.random() * options.length)]
+          console.log(winner)
+          $('.resultSection').text(winner)
+        }
+        $('.submit').click(submit)
+      })
+    </script>
   </body>
 </html>
